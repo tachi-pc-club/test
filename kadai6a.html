@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>数あてゲームVer.6</title>
+	<meta charset="UTF-8">
+</head>
+<body>
+<script type="text/javascript">
+		
+	var a = Math.floor(Math.random()*(9999+1 - 1000) + 1000);
+	var a1 = a%10;//1の位の数
+	var a2 = (a-a1)/10%10;//10の位の数
+	var a3 = (a-a1-a2*10)/100%10;//100の位の数
+	var a4 = (a-a1-a2*10-a3*100)/1000%10;//1000の位の数
+	var count = 0;
+	var counter1 = 0;
+	var counter2 = 0;
+	let correct = false;
+	var counter0 = 10-count;
+	var endswitch = false;
+	
+	//位の数があっているか表示したい
+	//大きいか小さいかを表示したい
+	if(count == 0){
+		var x = parseFloat(prompt("チャンスはあと"+counter0+"回です。"+"いくつ？ "+a));
+		var x1 = x%10;//1の位の数
+		var x2 = (x-x1)/10%10;//10の位の数
+		var x3 = (x-x1-x2*10)/100%10;//100の位の数
+		var x4 = (x-x1-x2*10-x3*100)/1000%10;//1000の位の数
+		if (a1 == x1){ counter1 ++;}
+		if (a2 == x2){ counter1 ++;}
+		if (a3 == x3){ counter1 ++;}
+		if (a4 == x4){ counter1 ++;}
+		counter2 = 4-counter1;
+		if (x == a){correct = true;}
+		count ++;
+	}
+	
+	
+
+	while (correct == false){
+		counter0 = 10-count;
+		var x = parseFloat(prompt("違います！あなたが入力したは数は["+x+"]でしたが、合っている数字は"+counter1+"つ、間違っている数字は"+counter2+"つのようです。もう一度やってみよう！チャンスはあと"+counter0+"回です。いくつ？ "));
+		var x1 = x%10;//1の位の数
+		var x2 = (x-x1)/10%10;//10の位の数
+		var x3 = (x-x1-x2*10)/100%10;//100の位の数
+		var x4 = (x-x1-x2*10-x3*100)/1000%10;//1000の位の数	
+		count ++;
+		counter1 = 0;
+		counter2 = 0;
+		if (a1 == x1){ counter1 ++;}
+		if (a2 == x2){ counter1 ++;}
+		if (a3 == x3){ counter1 ++;}
+		if (a4 == x4){ counter1 ++;}
+		counter2 = 4-counter1;
+		if (x == a){correct = true;}
+		if (counter0 == 1){correct = true;}
+	}
+	
+	
+	if (counter0 == 1){
+		endswitch = true;
+	}
+	if (endswitch == true){
+		correct = false
+		document.write("お使いのパソコンはウイルスに感染しています".big().fontcolor("white"))
+		document.bgColor = "red";
+		
+	}
+	if (correct == true){
+				document.write("正解！");
+				document.write("正解は"+x+"でした！")
+				document.bgColor = "#F6CEF5";
+	
+	}
+	
+	
+	
+</script>
+</body>
+</html>
